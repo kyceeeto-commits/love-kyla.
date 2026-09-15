@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>for all our tomorrows ♡</title>
+
+  <meta
+    name="description"
+    content="a little archive of us."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      background: #121110;
+      color: #f4efe8;
+
+      font-family: "DM Sans", sans-serif;
+    }
+
+    button {
+      font: inherit;
+    }
+
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          #292321 0%,
+          #191615 42%,
+          #0f0e0d 100%
+        );
+
+      transition:
+        opacity 1s ease,
+        visibility 1s ease;
+    }
+
+    .intro::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle,
+          transparent 35%,
+          rgba(0,0,0,0.34) 100%
+        );
+    }
+
+    .intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(90vw, 850px);
+
+      text-align: center;
+
+      animation: introAppear 1.5s ease forwards;
+    }
+
+    .intro-small {
+      margin-bottom: 25px;
+
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+
+      color: rgba(244,239,232,0.48);
+    }
+
+    .intro-title {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(58px, 9vw, 105px);
+      font-weight: 400;
+
+      line-height: 0.84;
+      letter-spacing: -0.045em;
+    }
+
+    .intro-title span {
+      display: block;
+      font-style: italic;
+    }
+
+    .intro-subtitle {
+      margin-top: 31px;
+
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+
+      color: rgba(244,239,232,0.5);
+    }
+
+    .begin-btn {
+      margin-top: 42px;
+
+      padding: 13px 27px;
+
+      border: 1px solid rgba(244,239,232,0.28);
+      border-radius: 0;
+
+      background: transparent;
+      color: #f4efe8;
+
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s ease;
+    }
+
+    .begin-btn:hover {
+      background: #f4efe8;
+      color: #121110;
+
+      border-color: #f4efe8;
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================================================
+       MAIN EXPERIENCE
+    ========================================================= */
+
+    .experience {
+      position: relative;
+
+      width: 100vw;
+      height: 100svh;
+
+      min-height: 600px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          ellipse at center,
+          #1d1a18 0%,
+          #121110 65%,
+          #0d0c0b 100%
+        );
+    }
+
+
+    /* =========================================================
+       GRAIN
+    ========================================================= */
+
+    .experience::before {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 20;
+
+      pointer-events: none;
+
+      opacity: 0.035;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+      mix-blend-mode: screen;
+    }
+
+
+    /* =========================================================
+       SLIDES
+    ========================================================= */
+
+    .slides {
+      position: absolute;
+      inset: 0;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 70px 7vw 130px;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: scale(1.025);
+
+      transition:
+        opacity 0.9s ease,
+        transform 1.2s cubic-bezier(.2,.8,.2,1),
+        visibility 0.9s;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+
+      transform: scale(1);
+    }
+
+
+    /* =========================================================
+       PHOTO FRAME
+    ========================================================= */
+
+    .photo-wrap {
+      position: relative;
+
+      width: min(68vw, 455px);
+      height: min(69vh, 650px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-wrap::before {
+      content: "";
+
+      position: absolute;
+      inset: -8px;
+
+      border: 1px solid rgba(244,239,232,0.14);
+
+      pointer-events: none;
+    }
+
+    .photo-wrap::after {
+      content: "";
+
+      position: absolute;
+      inset: -18px;
+
+      border: 1px solid rgba(244,239,232,0.045);
+
+      pointer-events: none;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      filter:
+        saturate(0.82)
+        contrast(0.97)
+        brightness(0.96);
+
+      box-shadow:
+        0 28px 70px rgba(0,0,0,0.48);
+
+      transition:
+        transform 1.4s cubic-bezier(.2,.8,.2,1),
+        filter 1s ease;
+    }
+
+    .slide.active .photo {
+      transform: scale(1.012);
+    }
+
+
+    /* =========================================================
+       CAPTIONS
+    ========================================================= */
+
+    .caption {
+      position: absolute;
+
+      left: 50%;
+      bottom: 8.5vh;
+
+      transform: translateX(-50%);
+
+      width: min(82vw, 650px);
+
+      text-align: center;
+
+      z-index: 5;
+    }
+
+    .chapter {
+      margin-bottom: 12px;
+
+      font-size: 8px;
+      font-weight: 400;
+
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+
+      color: #9b6668;
+    }
+
+    .caption-text {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(21px, 2.7vw, 30px);
+      font-weight: 400;
+
+      line-height: 1.15;
+
+      color: #f4efe8;
+
+      text-shadow:
+        0 3px 18px rgba(0,0,0,0.7);
+    }
+
+
+    /* =========================================================
+       COUNTER
+    ========================================================= */
+
+    .counter {
+      position: fixed;
+
+      top: 27px;
+      left: 32px;
+
+      z-index: 50;
+
+      font-size: 8px;
+      letter-spacing: 0.28em;
+
+      color: rgba(244,239,232,0.38);
+    }
+
+    .counter-current {
+      color: #f4efe8;
+    }
+
+
+    /* =========================================================
+       MUSIC
+    ========================================================= */
+
+    .music-control {
+      position: fixed;
+
+      top: 22px;
+      right: 27px;
+
+      z-index: 50;
+
+      width: 36px;
+      height: 36px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(244,239,232,0.2);
+      border-radius: 50%;
+
+      background: rgba(18,17,16,0.5);
+      color: #f4efe8;
+
+      font-size: 13px;
+
+      cursor: pointer;
+
+      backdrop-filter: blur(12px);
+
+      transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .music-control:hover {
+      border-color: rgba(244,239,232,0.45);
+
+      background: rgba(244,239,232,0.08);
+
+      transform: scale(1.06);
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .nav {
+      position: fixed;
+
+      left: 50%;
+      bottom: 28px;
+
+      transform: translateX(-50%);
+
+      z-index: 50;
+
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+    }
+
+    .nav button {
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(244,239,232,0.18);
+      border-radius: 50%;
+
+      background: rgba(18,17,16,0.48);
+      color: #f4efe8;
+
+      font-size: 13px;
+
+      cursor: pointer;
+
+      backdrop-filter: blur(12px);
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .nav button:hover {
+      background: rgba(244,239,232,0.1);
+
+      border-color: rgba(244,239,232,0.4);
+
+      transform: scale(1.07);
+    }
+
+
+    /* =========================================================
+       PROGRESS
+    ========================================================= */
+
+    .progress {
+      position: fixed;
+
+      left: 50%;
+      bottom: 15px;
+
+      transform: translateX(-50%);
+
+      width: min(180px, 35vw);
+      height: 1px;
+
+      background: rgba(244,239,232,0.12);
+
+      z-index: 50;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+
+      background: #9b6668;
+
+      transition:
+        width 0.8s ease;
+    }
+
+
+    /* =========================================================
+       FINAL LETTER
+    ========================================================= */
+
+    .final {
+      flex-direction: column;
+
+      text-align: center;
+
+      padding-left: 8vw;
+      padding-right: 8vw;
+    }
+
+    .final-label {
+      margin-bottom: 25px;
+
+      font-size: 8px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+
+      color: #9b6668;
+    }
+
+    .final-title {
+      max-width: 850px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(50px, 8vw, 94px);
+      font-weight: 400;
+
+      line-height: 0.86;
+
+      letter-spacing: -0.035em;
+    }
+
+    .final-title em {
+      display: block;
+
+      font-style: italic;
+
+      color: #a36d70;
+    }
+
+    .final-message {
+      max-width: 510px;
+
+      margin-top: 34px;
+
+      font-size: 12px;
+      font-weight: 300;
+
+      line-height: 1.85;
+
+      color: rgba(244,239,232,0.55);
+    }
+
+    .signature {
+      margin-top: 30px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 25px;
+      font-style: italic;
+
+      color: #f4efe8;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .experience {
+        min-height: 100svh;
+      }
+
+      .slide {
+        padding:
+          75px
+          24px
+          125px;
+      }
+
+      .photo-wrap {
+        width: min(80vw, 370px);
+        height: min(62vh, 570px);
+      }
+
+      .photo-wrap::before {
+        inset: -6px;
+      }
+
+      .photo-wrap::after {
+        inset: -13px;
+      }
+
+      .caption {
+        bottom: 91px;
+
+        width: min(88vw, 430px);
+      }
+
+      .chapter {
+        margin-bottom: 10px;
+
+        font-size: 7px;
+        letter-spacing: 0.3em;
+      }
+
+      .caption-text {
+        font-size: 21px;
+      }
+
+      .counter {
+        top: 21px;
+        left: 21px;
+      }
+
+      .music-control {
+        top: 16px;
+        right: 18px;
+
+        width: 34px;
+        height: 34px;
+      }
+
+      .nav {
+        bottom: 31px;
+      }
+
+      .nav button {
+        width: 36px;
+        height: 36px;
+      }
+
+      .progress {
+        bottom: 18px;
+
+        width: 120px;
+      }
+
+      .final {
+        padding:
+          70px
+          28px
+          120px;
+      }
+
+      .final-title {
+        font-size: clamp(48px, 13vw, 72px);
+      }
+
+      .final-message {
+        max-width: 340px;
+
+        font-size: 11px;
+        line-height: 1.75;
+      }
+    }
+
+
+    /* =========================================================
+       SMALL PHONES
+    ========================================================= */
+
+    @media (max-height: 650px) and (max-width: 700px) {
+
+      .photo-wrap {
+        height: 54vh;
+      }
+
+      .caption {
+        bottom: 83px;
+      }
+
+      .caption-text {
+        font-size: 18px;
+      }
+
+      .chapter {
+        margin-bottom: 7px;
+      }
+    }
+
+
+    /* =========================================================
+       INTRO ANIMATION
+    ========================================================= */
+
+    @keyframes introAppear {
+
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       INTRO
+  ======================================================== -->
+
+  <section
+    class="intro"
+    id="intro"
+  >
+
+    <div class="intro-content">
+
+      <div class="intro-small">
+        a little archive of us
+      </div>
+
+      <h1 class="intro-title">
+        for all our
+        <span>tomorrows ♡</span>
+      </h1>
+
+      <p class="intro-subtitle">
+        somewhere between yesterday and forever.
+      </p>
+
+      <button
+        class="begin-btn"
+        id="beginBtn"
+      >
+        begin
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       MAIN EXPERIENCE
+  ======================================================== -->
+
+  <main
+    class="experience"
+    id="experience"
+  >
+
+
+    <!-- COUNTER -->
+
+    <div class="counter">
+
+      <span
+        class="counter-current"
+        id="currentNumber"
+      >
+        01
+      </span>
+
+      /
+
+      <span id="totalNumber">
+        25
+      </span>
+
+    </div>
+
+
+
+    <!-- MUSIC -->
+
+    <button
+      class="music-control"
+      id="musicButton"
+      aria-label="Toggle music"
+    >
+      ♫
+    </button>
+
+
+
+    <!-- =====================================================
+         PHOTO SLIDES
+    ====================================================== -->
+
+    <div
+      class="slides"
+      id="slides"
+    >
+
+
+      <!-- PHOTO 01 -->
+
+      <article class="slide active">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/01.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            01 · somewhere along the way
+          </div>
+
+          <div class="caption-text">
+            and somehow, you became one of my favorite parts of life.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 02 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/02.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            02 · the beginning
+          </div>
+
+          <div class="caption-text">
+            every story has a beginning. I love that ours is ours.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 03 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/03.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            03 · little moments
+          </div>
+
+          <div class="caption-text">
+            the moments that didn't seem important then became memories I keep.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 04 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/04.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            04 · ordinary days
+          </div>
+
+          <div class="caption-text">
+            somehow, even ordinary days feel a little different with you.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 05 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/05.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            05 · us
+          </div>
+
+          <div class="caption-text">
+            just two people, making a life out of little moments.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 06 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/06.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            06 · the little things
+          </div>
+
+          <div class="caption-text">
+            I hope we never stop collecting little memories like these.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 07 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/07.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            07 · somewhere in between
+          </div>
+
+          <div class="caption-text">
+            somewhere between yesterday and today, there was us.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 08 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/08.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            08 · favorite person
+          </div>
+
+          <div class="caption-text">
+            you are still one of my favorite people to come home to.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 09 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/09.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            09 · laughter
+          </div>
+
+          <div class="caption-text">
+            thank you for giving me so many reasons to laugh.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 10 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/10.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            10 · memories
+          </div>
+
+          <div class="caption-text">
+            if I could keep one thing forever, it would be moments like this.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 11 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/11.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            11 · you make it home
+          </div>
+
+          <div class="caption-text">
+            somehow, being with you makes even unfamiliar places feel familiar.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 12 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/12.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            12 · halfway
+          </div>
+
+          <div class="caption-text">
+            halfway through the memories, and I already want more.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 13 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/13.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            13 · us being us
+          </div>
+
+          <div class="caption-text">
+            no perfect moment needed. just you, me, and whatever happens next.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 14 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/14.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            14 · the days I keep
+          </div>
+
+          <div class="caption-text">
+            these are the days I know I'll look back on someday.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 15 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/15.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            15 · close
+          </div>
+
+          <div class="caption-text">
+            there is something beautiful about being known and still being loved.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 16 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/16.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            16 · always a little more
+          </div>
+
+          <div class="caption-text">
+            one more picture. one more memory. one more day with you.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 17 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/17.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            17 · growing together
+          </div>
+
+          <div class="caption-text">
+            I hope we keep growing, changing, and finding each other again.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 18 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/18.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            18 · favorite memories
+          </div>
+
+          <div class="caption-text">
+            some memories fade. these are the ones I want to keep.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 19 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/19.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            19 · wherever we go
+          </div>
+
+          <div class="caption-text">
+            wherever life takes us, I hope we keep making our own little world.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 20 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/20.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            20 · this life
+          </div>
+
+          <div class="caption-text">
+            out of all the possible lives, I'm grateful this one has you in it.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 21 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/21.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            21 · still choosing you
+          </div>
+
+          <div class="caption-text">
+            through all the versions of us, I hope I keep choosing you.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 22 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/22.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            22 · almost forever
+          </div>
+
+          <div class="caption-text">
+            maybe forever isn't one big moment. maybe it's all of these little ones.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 23 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/23.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            23 · one more
+          </div>
+
+          <div class="caption-text">
+            and if I had to do it all again, I'd still want these moments with you.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PHOTO 24 -->
+
+      <article class="slide">
+
+        <div class="photo-wrap">
+
+          <img
+            class="photo"
+            src="photos/24.jpg"
+            alt="A memory of us"
+          >
+
+        </div>
+
+        <div class="caption">
+
+          <div class="chapter">
+            24 · for all our tomorrows
+          </div>
+
+          <div class="caption-text">
+            here's to everything we've been, everything we are, and everything we'll become.
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =================================================
+           FINAL LETTER
+      ================================================== -->
+
+      <article class="slide final">
+
+        <div class="final-label">
+          one last thing
+        </div>
+
+        <h2 class="final-title">
+
+          I don't know how many
+
+          <em>
+            tomorrows
+          </em>
+
+          we get.
+
+        </h2>
+
+        <p class="final-message">
+
+          But if I get to choose who I spend them with,
+          I hope it keeps being you.
+
+          <br><br>
+
+          Thank you for all the memories we've already made,
+          all the little moments in between,
+          and all the ones we haven't made yet.
+
+          <br><br>
+
+          Here's to more ordinary days,
+          more stupid laughs,
+          more pictures,
+          more places,
+          more growing,
+          and more us.
+
+        </p>
+
+        <div class="signature">
+          palangga &lt;3
+        </div>
+
+      </article>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <div class="nav">
+
+      <button
+        id="prevBtn"
+        aria-label="Previous photo"
+      >
+        ←
+      </button>
+
+      <button
+        id="nextBtn"
+        aria-label="Next photo"
+      >
+        →
+      </button>
+
+    </div>
+
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress">
+
+      <div
+        class="progress-bar"
+        id="progressBar"
+      ></div>
+
+    </div>
+
+
+  </main>
+
+
+
+  <!-- =======================================================
+       MUSIC
+  ======================================================== -->
+
+  <audio
+    id="music"
+    loop
+    preload="auto"
+  >
+
+    <source
+      src="music/song.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =======================================================
+       ELEMENTS
+    ======================================================== */
+
+    const intro =
+      document.getElementById("intro");
+
+    const beginBtn =
+      document.getElementById("beginBtn");
+
+    const slides =
+      document.querySelectorAll(".slide");
+
+    const prevBtn =
+      document.getElementById("prevBtn");
+
+    const nextBtn =
+      document.getElementById("nextBtn");
+
+    const currentNumber =
+      document.getElementById("currentNumber");
+
+    const totalNumber =
+      document.getElementById("totalNumber");
+
+    const progressBar =
+      document.getElementById("progressBar");
+
+    const music =
+      document.getElementById("music");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+
+    /* =======================================================
+       STATE
+    ======================================================== */
+
+    let current = 0;
+
+    let musicPlaying = false;
+
+    let touchStartX = 0;
+
+    let touchEndX = 0;
+
+
+    /* =======================================================
+       TOTAL
+    ======================================================== */
+
+    totalNumber.textContent =
+      String(slides.length).padStart(2, "0");
+
+
+    /* =======================================================
+       SHOW SLIDE
+    ======================================================== */
+
+    function showSlide(index) {
+
+      if (index < 0) {
+        index = slides.length - 1;
+      }
+
+      if (index >= slides.length) {
+        index = 0;
+      }
+
+      slides.forEach(
+        (slide, i) => {
+
+          slide.classList.toggle(
+            "active",
+            i === index
+          );
+
+        }
+      );
+
+      current = index;
+
+      currentNumber.textContent =
+        String(current + 1).padStart(2, "0");
+
+      const progress =
+        ((current + 1) / slides.length) * 100;
+
+      progressBar.style.width =
+        `${progress}%`;
+    }
+
+
+    /* =======================================================
+       NEXT
+    ======================================================== */
+
+    function nextSlide() {
+      showSlide(current + 1);
+    }
+
+
+    /* =======================================================
+       PREVIOUS
+    ======================================================== */
+
+    function previousSlide() {
+      showSlide(current - 1);
+    }
+
+
+    /* =======================================================
+       BUTTONS
+    ======================================================== */
+
+    nextBtn.addEventListener(
+      "click",
+      nextSlide
+    );
+
+    prevBtn.addEventListener(
+      "click",
+      previousSlide
+    );
+
+
+    /* =======================================================
+       KEYBOARD
+    ======================================================== */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (event.key === "ArrowRight") {
+          nextSlide();
+        }
+
+        if (event.key === "ArrowLeft") {
+          previousSlide();
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       SWIPE
+    ======================================================== */
+
+    document.addEventListener(
+      "touchstart",
+      (event) => {
+
+        touchStartX =
+          event.changedTouches[0].screenX;
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    document.addEventListener(
+      "touchend",
+      (event) => {
+
+        touchEndX =
+          event.changedTouches[0].screenX;
+
+        handleSwipe();
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    function handleSwipe() {
+
+      const difference =
+        touchStartX - touchEndX;
+
+      if (
+        Math.abs(difference) < 50
+      ) {
+        return;
+      }
+
+      if (difference > 0) {
+        nextSlide();
+      } else {
+        previousSlide();
+      }
+
+    }
+
+
+    /* =======================================================
+       BEGIN
+    ======================================================== */
+
+    beginBtn.addEventListener(
+      "click",
+      async () => {
+
+        intro.classList.add("hidden");
+
+        try {
+
+          await music.play();
+
+          musicPlaying = true;
+
+          musicButton.textContent = "♫";
+
+        } catch (error) {
+
+          musicPlaying = false;
+
+          musicButton.textContent = "♪";
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       MUSIC BUTTON
+    ======================================================== */
+
+    musicButton.addEventListener(
+      "click",
+      async () => {
+
+        if (musicPlaying) {
+
+          music.pause();
+
+          musicPlaying = false;
+
+          musicButton.textContent = "♪";
+
+          return;
+        }
+
+        try {
+
+          await music.play();
+
+          musicPlaying = true;
+
+          musicButton.textContent = "♫";
+
+        } catch (error) {
+
+          console.log(
+            "Music could not start."
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       INITIALIZE
+    ======================================================== */
+
+    showSlide(0);
+
+  </script>
+
+</body>
+</html>
